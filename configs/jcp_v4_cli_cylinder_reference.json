@@ -1,0 +1,9 @@
+{
+  "rho_inf": 1.0,
+  "pressure_inf": 0.7142857142857143,
+  "u_inf_x": 2.7,
+  "u_inf_y": 0.0,
+  "gamma": 1.4,
+  "reference_length": 1.0,
+  "source": "Registered MFC Mach-2.7 cylinder nondimensional metadata; not a default for other cases"
+}

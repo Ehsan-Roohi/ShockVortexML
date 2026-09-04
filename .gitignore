@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+predictions/
+data/raw/
+data/processed/
+results/
+output/
+*.log

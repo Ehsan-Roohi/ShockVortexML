@@ -1,0 +1,37 @@
+{
+  "campaign_config_sha256": "2b7650e73ee8b1051f4ece93c6b0767de212c0265f10947ce371f5d6c05ba75f",
+  "cfd_convergence_certified": false,
+  "checked_utc": "2026-09-04T23:19:37.495046+00:00",
+  "checkpoint_sha256": "ea7b6bfdae4b0fc7c520d6b7679337ad3ff173cc9a8ceb4f57133029dd07850a",
+  "frozen_source_files_verified": 20,
+  "human_reference_completed": false,
+  "independent_segmentation_accuracy": false,
+  "sample_cli": [
+    {
+      "input_sha256": "bde406e0d0005b0888acfddb3e3fbdb8f910bae7d6e8aea4f3d5e26875377cde",
+      "prediction_sha256": "c08f9771dece5c07a9e83ef5a34723badb7107a3576ba332f45d4043416e90f7",
+      "sample": "airfoil_m3_a40_re10000_t6",
+      "scope": "execution, finite score maps, separate outputs and geometry exclusion; not segmentation accuracy",
+      "status": "PASS"
+    },
+    {
+      "input_sha256": "cff6563a6d18d463a7e8b2d89c0bdebac3f5444dfacb6372b2dcd37fee3ca208",
+      "prediction_sha256": "4d0ef1d23cf159de73117440a28710318c4da99371c275e1c16fbcb0fa0f62f9",
+      "sample": "cylinder_euler_m2p7_t8",
+      "scope": "execution, finite score maps, separate outputs and geometry exclusion; not segmentation accuracy",
+      "status": "PASS"
+    }
+  ],
+  "status": "ENGINEERING_QA_PASS_NOT_INDEPENDENT_ACCURACY",
+  "unit_tests": {
+    "failed": 0,
+    "passed": 9,
+    "source": "this standalone release checkout; scientific packages unchanged from campaign freeze"
+  },
+  "wheel": {
+    "annotation_assets_included": true,
+    "entry_point_verified": true,
+    "sha256": "f238c8928f78c31f562a99e463c7950d7ec2ef3bb7ad057fb07c1b529847c40b",
+    "status": "PASS"
+  }
+}

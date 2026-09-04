@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shockvortexml"
+version = "0.4.0.dev1"
+description = "Development-stage neural shock and vortex-core segmentation for CFD"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = ["numpy==2.5.2", "scipy==1.18.1", "torch==2.8.0"]
+
+[project.optional-dependencies]
+research = ["matplotlib==3.11.1", "h5py==3.16.0", "Pillow==12.3.0", "transformers==4.55.4", "huggingface-hub==0.36.2", "tokenizers==0.21.4", "safetensors==0.8.0", "PyYAML==6.0.3"]
+
+[project.scripts]
+shockvortexml = "jcp2026.infer:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["analyze_mfc_euler_cylinder", "annotation_server", "audit_mfc_euler_cylinder_three_run_sensitivity", "audit_mfc_euler_cylinder_vortex_dynamics", "evaluate_geometry_robust_v2", "evaluate_stage5_joint", "physics_proposals", "train_stage5_joint"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["jcp2026*", "ml*", "annotation_ui*"]
+
+[tool.setuptools.package-data]
+annotation_ui = ["*.html", "*.css", "*.js"]

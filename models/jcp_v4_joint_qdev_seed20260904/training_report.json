@@ -1,0 +1,76 @@
+{
+  "checkpoint_sha256": "ea7b6bfdae4b0fc7c520d6b7679337ad3ff173cc9a8ceb4f57133029dd07850a",
+  "config_sha256": "2b7650e73ee8b1051f4ece93c6b0767de212c0265f10947ce371f5d6c05ba75f",
+  "dataset_index_sha256": "189f73e4526b76c3dc828e92e6c05957f43ae76e62de18b6ccd0fe79ced5f375",
+  "device": "cpu",
+  "history": [
+    {
+      "conflicts": 11,
+      "epoch": 1,
+      "gradient_audits": 25,
+      "gradient_cosine": -0.0045309578254818916,
+      "loss": 1.964734091758728,
+      "seconds": 89.80848340000011
+    },
+    {
+      "conflicts": 8,
+      "epoch": 2,
+      "gradient_audits": 25,
+      "gradient_cosine": 0.03892685947008431,
+      "loss": 1.3138205456733703,
+      "seconds": 89.16886659999727
+    },
+    {
+      "conflicts": 11,
+      "epoch": 3,
+      "gradient_audits": 25,
+      "gradient_cosine": 0.009296680241823197,
+      "loss": 1.007216957807541,
+      "seconds": 70.79939770000055
+    },
+    {
+      "conflicts": 12,
+      "epoch": 4,
+      "gradient_audits": 25,
+      "gradient_cosine": -0.017766261519864202,
+      "loss": 0.8656468218564988,
+      "seconds": 75.6288489000035
+    },
+    {
+      "conflicts": 9,
+      "epoch": 5,
+      "gradient_audits": 25,
+      "gradient_cosine": 0.06532966816797853,
+      "loss": 0.8027643603086472,
+      "seconds": 263.1208048999979
+    },
+    {
+      "conflicts": 13,
+      "epoch": 6,
+      "gradient_audits": 25,
+      "gradient_cosine": 0.007759086759760976,
+      "loss": 0.7828692454099655,
+      "seconds": 127.4201577000058
+    }
+  ],
+  "parameters": 268496,
+  "patch_manifest_sha256": "13ceecc31c73e3fd444102710c30d1c30298d0166e71e514f8f9c3b0a1f62e25",
+  "process_memory": {
+    "peak_pagefile_bytes": 1055952896,
+    "peak_resident_bytes": 2096050176,
+    "scope": "entire Python process, including imports and mapped patch pages"
+  },
+  "scientific_status": "weak_pretraining_not_independent_validation",
+  "seconds": 716.154328200002,
+  "seed": 20260904,
+  "spec": {
+    "architecture": "joint_unet",
+    "diagnostics": true,
+    "pcgrad": true,
+    "temporal_targets": false
+  },
+  "status": "PASS",
+  "torch_version": "2.8.0+cpu",
+  "training_source_sha256": "3ecbbcd14c7dafd9fb0be167260c4777f59f9e71cf3dd943be9f074cde1e55ef",
+  "variant": "joint_qdev"
+}

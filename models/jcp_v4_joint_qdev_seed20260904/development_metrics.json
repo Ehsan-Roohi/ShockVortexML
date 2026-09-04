@@ -1,0 +1,424 @@
+{
+  "claim_boundary": "Development experiments with weak labels, not independent accuracy or untouched CFD validation.",
+  "hybrid_type": "instantaneous component support; temporal training ablation is distinct",
+  "independent_accuracy": false,
+  "physics_self_score_omitted": true,
+  "status": "PASS",
+  "summary": [
+    {
+      "branch": "ml_only",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 72,
+          "false_positive_pixels": 93,
+          "true_positive_pixels": 937,
+          "weak_dice": 0.9190779794016675,
+          "weak_precision": 0.9097087378640777,
+          "weak_recall": 0.9286422200198216
+        },
+        "vortex_core": {
+          "false_negative_pixels": 1914,
+          "false_positive_pixels": 2914,
+          "true_positive_pixels": 6241,
+          "weak_dice": 0.7210860774119007,
+          "weak_precision": 0.6817039868924085,
+          "weak_recall": 0.7652973635806254
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        48,
+        40,
+        4
+      ],
+      "vortex_object_f1": 0.6857142857142857
+    },
+    {
+      "branch": "hybrid",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 40,
+          "false_positive_pixels": 397,
+          "true_positive_pixels": 969,
+          "weak_dice": 0.816,
+          "weak_precision": 0.7093704245973645,
+          "weak_recall": 0.9603567888999008
+        },
+        "vortex_core": {
+          "false_negative_pixels": 1003,
+          "false_positive_pixels": 4423,
+          "true_positive_pixels": 7152,
+          "weak_dice": 0.7249873289406994,
+          "weak_precision": 0.6178833693304535,
+          "weak_recall": 0.8770079705702023
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        50,
+        65,
+        2
+      ],
+      "vortex_object_f1": 0.5988023952095808
+    },
+    {
+      "branch": "equal_threshold_ml",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 51,
+          "false_positive_pixels": 242,
+          "true_positive_pixels": 958,
+          "weak_dice": 0.8673607967406066,
+          "weak_precision": 0.7983333333333333,
+          "weak_recall": 0.9494549058473737
+        },
+        "vortex_core": {
+          "false_negative_pixels": 2688,
+          "false_positive_pixels": 1881,
+          "true_positive_pixels": 5467,
+          "weak_dice": 0.7052828484809391,
+          "weak_precision": 0.7440119760479041,
+          "weak_recall": 0.6703862660944206
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        47,
+        28,
+        5
+      ],
+      "vortex_object_f1": 0.7401574803149606
+    },
+    {
+      "branch": "ml_only",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 7089,
+          "false_positive_pixels": 84,
+          "true_positive_pixels": 124003,
+          "weak_dice": 0.9718903201282237,
+          "weak_precision": 0.9993230555980884,
+          "weak_recall": 0.9459234735910658
+        },
+        "vortex_core": {
+          "false_negative_pixels": 3193,
+          "false_positive_pixels": 56450,
+          "true_positive_pixels": 4459,
+          "weak_dice": 0.13007394874637185,
+          "weak_precision": 0.07320757195159992,
+          "weak_recall": 0.582723470987977
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        63,
+        291,
+        75
+      ],
+      "vortex_object_f1": 0.25609756097560976
+    },
+    {
+      "branch": "hybrid",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 929,
+          "false_positive_pixels": 1257,
+          "true_positive_pixels": 130163,
+          "weak_dice": 0.9916727616261352,
+          "weak_precision": 0.9904352457768985,
+          "weak_recall": 0.9929133738138102
+        },
+        "vortex_core": {
+          "false_negative_pixels": 2235,
+          "false_positive_pixels": 66015,
+          "true_positive_pixels": 5417,
+          "weak_dice": 0.1369935764503566,
+          "weak_precision": 0.07583435995072237,
+          "weak_recall": 0.707919498170413
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        82,
+        314,
+        56
+      ],
+      "vortex_object_f1": 0.30711610486891383
+    },
+    {
+      "branch": "equal_threshold_ml",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 1693,
+          "false_positive_pixels": 279,
+          "true_positive_pixels": 129399,
+          "weak_dice": 0.9924377804195268,
+          "weak_precision": 0.9978485170961922,
+          "weak_recall": 0.9870854056693009
+        },
+        "vortex_core": {
+          "false_negative_pixels": 4448,
+          "false_positive_pixels": 41757,
+          "true_positive_pixels": 3204,
+          "weak_dice": 0.12179499363275235,
+          "weak_precision": 0.07126176019216654,
+          "weak_recall": 0.41871406168322006
+        }
+      },
+      "split": "validation",
+      "vortex_object_counts": [
+        51,
+        266,
+        87
+      ],
+      "vortex_object_f1": 0.22417582417582418
+    },
+    {
+      "branch": "ml_only",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 0,
+          "false_positive_pixels": 222,
+          "true_positive_pixels": 943,
+          "weak_dice": 0.8946869070208728,
+          "weak_precision": 0.8094420600858369,
+          "weak_recall": 1.0
+        },
+        "vortex_core": {
+          "false_negative_pixels": 1335,
+          "false_positive_pixels": 25153,
+          "true_positive_pixels": 65899,
+          "weak_dice": 0.8326573417737513,
+          "weak_precision": 0.7237512630145412,
+          "weak_recall": 0.9801439747746675
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        424,
+        346,
+        0
+      ],
+      "vortex_object_f1": 0.7102177554438861
+    },
+    {
+      "branch": "hybrid",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 0,
+          "false_positive_pixels": 625,
+          "true_positive_pixels": 943,
+          "weak_dice": 0.7510951812027081,
+          "weak_precision": 0.6014030612244898,
+          "weak_recall": 1.0
+        },
+        "vortex_core": {
+          "false_negative_pixels": 1335,
+          "false_positive_pixels": 25270,
+          "true_positive_pixels": 65899,
+          "weak_dice": 0.832042322430762,
+          "weak_precision": 0.7228224506136954,
+          "weak_recall": 0.9801439747746675
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        424,
+        347,
+        0
+      ],
+      "vortex_object_f1": 0.7096234309623431
+    },
+    {
+      "branch": "equal_threshold_ml",
+      "family": "airfoil",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 0,
+          "false_positive_pixels": 472,
+          "true_positive_pixels": 943,
+          "weak_dice": 0.7998303647158609,
+          "weak_precision": 0.6664310954063605,
+          "weak_recall": 1.0
+        },
+        "vortex_core": {
+          "false_negative_pixels": 2631,
+          "false_positive_pixels": 18225,
+          "true_positive_pixels": 64603,
+          "weak_dice": 0.8610174461222695,
+          "weak_precision": 0.7799657120780412,
+          "weak_recall": 0.9608680132076033
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        422,
+        292,
+        2
+      ],
+      "vortex_object_f1": 0.7416520210896309
+    },
+    {
+      "branch": "ml_only",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 10452,
+          "false_positive_pixels": 147,
+          "true_positive_pixels": 121196,
+          "weak_dice": 0.9581052290397682,
+          "weak_precision": 0.9987885580544407,
+          "weak_recall": 0.9206064657267866
+        },
+        "vortex_core": {
+          "false_negative_pixels": 6589,
+          "false_positive_pixels": 94162,
+          "true_positive_pixels": 13888,
+          "weak_dice": 0.21611023364740484,
+          "weak_precision": 0.12853308653401202,
+          "weak_recall": 0.6782243492699126
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        251,
+        323,
+        130
+      ],
+      "vortex_object_f1": 0.5256544502617801
+    },
+    {
+      "branch": "hybrid",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 1086,
+          "false_positive_pixels": 929,
+          "true_positive_pixels": 130562,
+          "weak_dice": 0.9923424501879234,
+          "weak_precision": 0.9929348776722361,
+          "weak_recall": 0.9917507292173068
+        },
+        "vortex_core": {
+          "false_negative_pixels": 5451,
+          "false_positive_pixels": 96974,
+          "true_positive_pixels": 15026,
+          "weak_dice": 0.22684692437177775,
+          "weak_precision": 0.13416071428571427,
+          "weak_recall": 0.7337988963227036
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        258,
+        340,
+        123
+      ],
+      "vortex_object_f1": 0.5270684371807968
+    },
+    {
+      "branch": "equal_threshold_ml",
+      "family": "cylinder",
+      "heads": {
+        "shock": {
+          "false_negative_pixels": 2403,
+          "false_positive_pixels": 353,
+          "true_positive_pixels": 129245,
+          "weak_dice": 0.9894505561807645,
+          "weak_precision": 0.9972761925338354,
+          "weak_recall": 0.9817467792902285
+        },
+        "vortex_core": {
+          "false_negative_pixels": 9463,
+          "false_positive_pixels": 80157,
+          "true_positive_pixels": 11014,
+          "weak_dice": 0.19729865290914303,
+          "weak_precision": 0.12080595803490145,
+          "weak_recall": 0.5378717585583825
+        }
+      },
+      "split": "test",
+      "vortex_object_counts": [
+        236,
+        333,
+        145
+      ],
+      "vortex_object_f1": 0.4968421052631579
+    }
+  ],
+  "threshold_freeze": {
+    "checkpoint_sha256": "ea7b6bfdae4b0fc7c520d6b7679337ad3ff173cc9a8ceb4f57133029dd07850a",
+    "config_sha256": "2b7650e73ee8b1051f4ece93c6b0767de212c0265f10947ce371f5d6c05ba75f",
+    "dataset_index_sha256": "189f73e4526b76c3dc828e92e6c05957f43ae76e62de18b6ccd0fe79ced5f375",
+    "family_macro_scores": [
+      [
+        0.43217238689148463,
+        0.6013892327607562,
+        0.6867709717686278,
+        0.7421034182825618,
+        0.7865642397349792,
+        0.8250198136280611,
+        0.8635759902624306,
+        0.8819045858168417,
+        0.897772017621133,
+        0.9147812568348419,
+        0.9298992885800668,
+        0.9389069324780288,
+        0.9449682318310118,
+        0.9454841497649455,
+        0.9372793940612798,
+        0.8188900358818328
+      ],
+      [
+        0.08016630800591507,
+        0.2016109365283779,
+        0.26736495206398186,
+        0.3181661059669272,
+        0.35674730826677714,
+        0.38554733813674547,
+        0.4122278511090357,
+        0.42256866571394447,
+        0.4232488936110776,
+        0.4255800130791363,
+        0.41353892105684575,
+        0.4012389826113706,
+        0.3662100861405337,
+        0.30838867801716313,
+        0.26301647722345534,
+        0.17103214316874266
+      ]
+    ],
+    "grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.925,
+      0.95,
+      0.97,
+      0.98,
+      0.99
+    ],
+    "independent_calibration": false,
+    "selection": "validation-only family-macro weak Dice",
+    "thresholds": {
+      "shock": 0.97,
+      "vortex_core": 0.85
+    }
+  }
+}

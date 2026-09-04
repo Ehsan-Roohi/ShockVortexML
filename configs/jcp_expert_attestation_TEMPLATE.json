@@ -1,0 +1,10 @@
+{
+  "reviewer": "Ehsan Roohi Golkhatmi",
+  "signed_date": "",
+  "actual_human_review_completed": false,
+  "predictions_hidden_during_labeling": false,
+  "ambiguity_recorded": false,
+  "prior_exposure_disclosed": false,
+  "prior_exposure_notes": "Describe which cases/figures were already seen before this review.",
+  "scientific_scope": "Structures in stored CFD snapshots; no assertion of CFD convergence or genuine physical shedding."
+}

@@ -1,0 +1,9 @@
+{
+  "gamma": 1.4,
+  "pressure_inf": 0.7142857142857143,
+  "reference_length": 1.0,
+  "rho_inf": 1.0,
+  "source": "explicit_case_metadata",
+  "u_inf_x": 2.298133329356934,
+  "u_inf_y": 1.9283628290596178
+}

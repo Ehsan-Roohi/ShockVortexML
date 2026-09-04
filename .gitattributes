@@ -1,0 +1,4 @@
+# Preserve byte-level scientific hashes across Windows/Linux checkouts.
+* -text
+*.npz binary
+*.pt binary

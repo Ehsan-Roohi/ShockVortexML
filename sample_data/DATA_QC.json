@@ -1,0 +1,98 @@
+{
+  "exclusions": [
+    "failed viscous-cylinder states",
+    "private papers and email",
+    "unreviewed masks presented as truth",
+    "bulk raw archives"
+  ],
+  "samples": [
+    {
+      "case": "re1e4_f180",
+      "cfd_convergence_certified": false,
+      "dataset_id": "re1e4_f180_s000021600",
+      "development_split": "train; previously inspected, not a held-out benchmark",
+      "failed_viscous_cylinder": false,
+      "geometry_pixels": 511,
+      "name": "airfoil_m3_a40_re10000_t6",
+      "observed_fluid_pixels": 261087,
+      "path": "sample_data/airfoil_m3_a40_re10000_t6.npz",
+      "primitive_source_sha256": "a0dee810fccb7f7a53964c13ab351cc25f4f929473942f96f27205243b2dd2a8",
+      "primitive_stats": {
+        "pressure": {
+          "observed_max": 8.42658519744873,
+          "observed_min": 0.13643385469913483
+        },
+        "rho": {
+          "observed_max": 4.257795333862305,
+          "observed_min": 0.1397925466299057
+        },
+        "u": {
+          "observed_max": 3.0001561641693115,
+          "observed_min": -0.519074022769928
+        },
+        "v": {
+          "observed_max": 2.5354254245758057,
+          "observed_min": -0.7147791385650635
+        }
+      },
+      "q_identity_relative_residual": 1.4467531914057748e-16,
+      "qc": "PASS finite/positive-fluid/grid/integrity/round-trip checks",
+      "reference_path": "sample_data/airfoil_m3_a40_re10000_t6_reference.json",
+      "reference_sha256": "6a6833a471acaeca38a244b60d2e425ec6434193cb0c5bff1b54315e79d779cf",
+      "sha256": "bde406e0d0005b0888acfddb3e3fbdb8f910bae7d6e8aea4f3d5e26875377cde",
+      "shape": [
+        512,
+        512
+      ],
+      "shock_vortex_truth_labels_included": false,
+      "size_bytes": 2417861,
+      "time": 6.0,
+      "upstream_harmonized_cache_sha256": "5e902f07dd65326e6ae6cb15efd4b7e4f7df8a312c1baf6ef9f36c07f7442a80"
+    },
+    {
+      "case": "baseline_f90_cfl0p20",
+      "cfd_convergence_certified": false,
+      "dataset_id": "cylinder_baseline_f90_cfl0p20_s00013320",
+      "development_split": "train; previously inspected, not a held-out benchmark",
+      "failed_viscous_cylinder": false,
+      "geometry_pixels": 6376,
+      "name": "cylinder_euler_m2p7_t8",
+      "observed_fluid_pixels": 884624,
+      "path": "sample_data/cylinder_euler_m2p7_t8.npz",
+      "primitive_source_sha256": "333219f79e36c8727c210d76762f74e34d30a6ae4cb5a620c63fb40875f5cecf",
+      "primitive_stats": {
+        "pressure": {
+          "observed_max": 7.121099472045898,
+          "observed_min": 0.019577153027057648
+        },
+        "rho": {
+          "observed_max": 4.073453903198242,
+          "observed_min": 0.05834216624498367
+        },
+        "u": {
+          "observed_max": 2.873028516769409,
+          "observed_min": -1.9311630725860596
+        },
+        "v": {
+          "observed_max": 2.181460380554199,
+          "observed_min": -2.180851697921753
+        }
+      },
+      "q_identity_relative_residual": 2.1122228157673348e-16,
+      "qc": "PASS finite/positive-fluid/grid/integrity/round-trip checks",
+      "reference_path": "sample_data/cylinder_euler_m2p7_t8_reference.json",
+      "reference_sha256": "acc6cd69ed1531ffa19c82147805d07834af365c5f44c6cf0344f2fdcfbe6cd8",
+      "sha256": "cff6563a6d18d463a7e8b2d89c0bdebac3f5444dfacb6372b2dcd37fee3ca208",
+      "shape": [
+        900,
+        990
+      ],
+      "shock_vortex_truth_labels_included": false,
+      "size_bytes": 7705364,
+      "time": 8.0,
+      "upstream_harmonized_cache_sha256": "037fb730581662747937bd471f8a58bbfad4f15f2b138c305e5e1a39f389a560"
+    }
+  ],
+  "scope": "Author-approved illustrative data for ML pipeline reproduction. No human labels or physical shedding claims. All source CFD preserved.",
+  "status": "NUMERICAL_DATA_QC_PASS_NOT_CFD_VALIDATION"
+}

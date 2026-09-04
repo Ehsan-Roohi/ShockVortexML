@@ -1,0 +1,12 @@
+# Exact distributions imported on this CPU host; Python 3.12.14.
+numpy==2.5.2
+scipy==1.18.1
+torch==2.8.0
+matplotlib==3.11.1
+h5py==3.16.0
+Pillow==12.3.0
+transformers==4.55.4
+huggingface-hub==0.36.2
+tokenizers==0.21.4
+safetensors==0.8.0
+PyYAML==6.0.3

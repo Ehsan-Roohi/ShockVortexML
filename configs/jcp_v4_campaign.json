@@ -1,0 +1,45 @@
+{
+  "experiment_id": "jcp_v4_harmonized",
+  "target_journal": "Journal of Computational Physics",
+  "diagnostic_contract": "qdev2d_velocity_gradient_float64_v1",
+  "source_index": "data/processed/geometry_robust_v2/dataset_index.json",
+  "output": "data/processed/jcp_v4",
+  "results": "results/jcp_v4",
+  "claim_boundary": "Development experiments with weak labels, not independent accuracy or untouched CFD validation.",
+  "seeds": [20260904, 20260905, 20260906],
+  "variants": {
+    "joint_qdev": {"architecture": "joint_unet", "diagnostics": true, "pcgrad": true, "temporal_targets": false},
+    "no_pcgrad": {"architecture": "joint_unet", "diagnostics": true, "pcgrad": false, "temporal_targets": false},
+    "primitive_only": {"architecture": "joint_unet", "diagnostics": false, "pcgrad": true, "temporal_targets": false},
+    "segformer_b0": {"architecture": "segformer_b0", "diagnostics": true, "pcgrad": false, "temporal_targets": false},
+    "temporal_targets": {"architecture": "joint_unet", "diagnostics": true, "pcgrad": true, "temporal_targets": true}
+  },
+  "temporal_override_index": "data/processed/geometry_robust_v3_temporal_overrides/override_index.json",
+  "temporal_policy": "Frozen legacy teacher proposals used on TRAIN ONLY; validation and development-test targets always remain original. This is weak self-training, not independent truth.",
+  "training": {
+    "patch_seed": 20260904, "base_channels": 10, "patch_size": 128, "batch_size": 4,
+    "epochs": 6, "steps_per_epoch": 100, "learning_rate": 0.001,
+    "minimum_learning_rate": 0.00001, "weight_decay": 0.0001,
+    "head_loss_weights": [1.0, 1.4, 0.10, 0.12, 0.20, 0.28],
+    "positive_weight_cap": [20.0, 16.0, 2.0, 20.0, 12.0, 12.0],
+    "focus_probabilities": [0.22, 0.34, 0.22, 0.08, 0.08, 0.06],
+    "pcgrad_interval": 4, "torch_num_threads": 8,
+    "initialization": "from_scratch_for_every_variant_and_seed",
+    "checkpoint_selection": "fixed_final_training_step; no test-driven selection",
+    "budget": "matched optimizer updates, patch schedule, labels except named temporal ablation; parameters, time and memory are reported, not claimed equal"
+  },
+  "evaluation": {
+    "thresholds": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.925, 0.95, 0.97, 0.98, 0.99],
+    "selection": "validation family-macro weak Dice only",
+    "tile_size": 384, "tile_overlap": 64, "minimum_component_pixels": 9,
+    "equal_threshold_audit": 0.9,
+    "hybrid": {"shock_seed_floor": 0.75, "vortex_seed_floor": 0.75, "rotation_support_fraction": 0.5, "maximum_wall_fraction": 0.25, "shock_dilation_cells": 6},
+    "independent_accuracy_enabled": false
+  },
+  "final_test": {
+    "status": "awaiting_new_whole_case_and_independent_review",
+    "records": [],
+    "existing_test_role": "previously_inspected_development_control_only",
+    "policy": "Register source and whole-case role before inspecting fields; freeze checkpoint/config/threshold hashes before one final evaluation. Any subsequent tuning retires that case from untouched status."
+  }
+}

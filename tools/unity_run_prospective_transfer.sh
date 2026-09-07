@@ -5,6 +5,7 @@ ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 INPUT_ROOT=${INPUT_ROOT:?set INPUT_ROOT to derived_selected_20260907_v3}
 OUTPUT_ROOT=${OUTPUT_ROOT:?set OUTPUT_ROOT to a new output directory}
 ENV_ROOT=${ENV_ROOT:-${OUTPUT_ROOT}_venv}
+EXPECTED_INPUTS=${EXPECTED_INPUTS:-9}
 
 if [[ ! -x "$ENV_ROOT/bin/python" ]]; then
   python -m venv "$ENV_ROOT"
@@ -35,7 +36,7 @@ while IFS= read -r input; do
   count=$((count + 1))
 done < <(find "$INPUT_ROOT" -mindepth 2 -maxdepth 2 -type f -name '*.npz' | sort)
 
-[[ "$count" -eq 9 ]]
+[[ "$count" -eq "$EXPECTED_INPUTS" ]]
 sha256sum "$OUTPUT_ROOT"/predictions/*/*.npz > "$OUTPUT_ROOT/PREDICTIONS.sha256"
 printf 'status=PASS\ncommit=%s\ninputs=%d\nbranch=ML_ONLY\n' "$(git rev-parse HEAD)" "$count" > "$OUTPUT_ROOT/RUN_OK.txt"
 cat "$OUTPUT_ROOT/RUN_OK.txt"

@@ -1,0 +1,89 @@
+{
+  "experiment": "separate_learned_wake_shear_v3_precision",
+  "results": "results/jcp_wake_auxiliary_20260906_v3",
+  "index": "data/processed/jcp_v4/dataset_index.json",
+  "native_index": "data/processed/jcp_native_primitives_v1/index.json",
+  "core_seed_index": "results/jcp_vortex_recovery_20260906_v1/teacher_train/INDEX.json",
+  "protected_checkpoint": "results/jcp_vortex_robustness_20260906_v2/checkpoint.pt",
+  "protected_checkpoint_sha256": "76dd8725e5e36cb54ea3147b2eec09a343720bd78a65fda1742beb492966fe85",
+  "seed": 202609068,
+  "semantics": "Auxiliary wake/shear region, including onset and rotating patches; not a replacement for vortex_core or an expansion-fan classifier.",
+  "teacher": {
+    "velocity_smoothing_cells": 0.75,
+    "rms_radius_L": 0.02,
+    "local_mean_radius_L": 0.06,
+    "minimum_rms_vorticity": 0.2,
+    "minimum_rotation_to_compression_fraction": 0.65,
+    "minimum_local_parallel_deficit": 0.01,
+    "wall_clearance_cells": 2,
+    "minimum_component_pixels": 9,
+    "ignore_boundary_cells": 2,
+    "seed_policy": "Grow only components containing an existing TRAIN weak-core seed; no geometry-specific corridor or author ROI.",
+    "downstream_centroid_only": true,
+    "downstream_note": "TRAIN label membership only; upstream fluid remains valid wake-negative; no plane or teacher at inference"
+  },
+  "training": {
+    "steps": 500,
+    "batch_size": 4,
+    "patch_size": 128,
+    "width": 16,
+    "learning_rate": 0.0003,
+    "minimum_learning_rate": 0.00003,
+    "weight_decay": 0.0001,
+    "threads": 4,
+    "synthetic_negative_probability": 0.25,
+    "noise_probability": 0.6,
+    "noise_fractions": [
+      0.005,
+      0.01,
+      0.02
+    ],
+    "positive_sampling_probability": 0.35,
+    "hard_negative_sampling_probability": 0.55,
+    "checkpoint_selection": "Fixed final update, not development-score selection."
+  },
+  "evaluation": {
+    "wake_threshold": 0.5,
+    "minimum_pixels": 9,
+    "preserve_old_outputs_exactly": true,
+    "minimum_noisy_wake_dice": 0.75,
+    "maximum_uniform_positive_pixels": 0,
+    "maximum_linear_shear_positive_pixels": 0,
+    "scope": "Existing exposed 17-input development suite, five late f270 states, full-field visual review; no independent accuracy claim.",
+    "minimum_late_onset_weak_coverage": 0.75,
+    "onset_diagnostic": {
+      "s_min": 0,
+      "s_max": 1.5,
+      "n_min": -0.15,
+      "n_max": 0.55,
+      "origin": [
+        1,
+        0
+      ],
+      "coordinate": "metadata freestream basis; descriptive metric, never training/inference mask"
+    }
+  },
+  "parent_results": "results/jcp_wake_auxiliary_20260906_v2",
+  "parent_checkpoint_sha256": "8e49fab7a0ac6d2f17059e3996417eed01f089daca3c60b60452f03fca2636b6",
+  "mining": {
+    "threshold": 0.5,
+    "split": "train",
+    "definition": "Frozen v2 positive responses intersecting unchanged v2 teacher valid negatives; never development inputs."
+  },
+  "synthetic": {
+    "extent_range": [
+      0.6,
+      1.4
+    ],
+    "shear_range": [
+      -4,
+      4
+    ],
+    "speed_range": [
+      2.5,
+      3.5
+    ],
+    "uniform_probability": 0.25
+  },
+  "attempt": "Second and FINAL overnight attempt, 500 additional updates from v2 (1000 cumulative). No inference threshold or label-target changes."
+}

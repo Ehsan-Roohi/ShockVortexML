@@ -1,0 +1,44 @@
+{
+  "experiment": "vortex_primitive_noise_hard_negative_v2",
+  "initial": "results/jcp_vortex_recovery_20260906_v1/checkpoint.pt",
+  "initial_sha256": "a7d8dd4cb8de21bb2888a1413f61599dcc524a860380b1f3f93f2f12e35f4540",
+  "anchor": "results/jcp_upper_shock_preservation_20260905/checkpoint.pt",
+  "anchor_sha256": "d1163b39f0bb56bc77ec440bca305845a1fd857c5113c125ab446e61a18862d6",
+  "weak_config": "configs/jcp_vortex_recovery_20260906_v1.json",
+  "native_index": "data/processed/jcp_native_primitives_v1/index.json",
+  "index": "data/processed/jcp_v4/dataset_index.json",
+  "results": "results/jcp_vortex_robustness_20260906_v2",
+  "seed": 202609062,
+  "hard_negative": {
+    "maximum_swirl_L_over_U": 0.05,
+    "maximum_gamma2_abs": 0.3,
+    "positive_clearance_cells": 4,
+    "body_clearance_cells": 2,
+    "require_existing_valid_negative": true,
+    "shock_exclusion": false
+  },
+  "training": {
+    "steps": 300, "batch_size": 4, "patch_size": 192,
+    "learning_rate": 0.0001, "minimum_learning_rate": 0.00001,
+    "weight_decay": 0.0001, "positive_weight_cap": 16,
+    "hard_negative_loss_weight": 0.5,
+    "positive_clean_teacher_weight": 0.5,
+    "synthetic_negative_probability": 0.15,
+    "focus_probabilities": [0.05, 0.5, 0.3, 0.05, 0.02, 0.08],
+    "noise_probability": 0.7,
+    "velocity_std_fractions": [0.005, 0.01, 0.02],
+    "torch_threads": 4,
+    "trainable_prefixes": ["vortex_decoder.", "vortex_head."],
+    "checkpoint_selection": "fixed final step; no evaluation-based selection"
+  },
+  "evaluation": {
+    "fixed_thresholds": {"shock": 0.97, "vortex_core": 0.85},
+    "minimum_component_pixels": 9, "tile_size": 384, "tile_overlap": 64, "batch_size": 4,
+    "minimum_original_cylinder_core_retention": 0.75,
+    "minimum_known_airfoil_wake_weak_coverage": 0.85,
+    "minimum_clean_noisy_mask_dice": 0.77,
+    "maximum_low_rotation_cylinder_ratio_to_v1": 0.5,
+    "maximum_canonical_negative_core_pixels": 0,
+    "scope": "Previously inspected development cases, not an untouched test or independent accuracy benchmark. Low-rotation flags and weak-proposal coverage are supporting diagnostics, not ground truth."
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "case": "baseline_f90_cfl0p20",
+      "eligible_untouched": false,
+      "original_split": "train",
+      "retained_frames": 25,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "grid_f180_cfl0p20",
+      "eligible_untouched": false,
+      "original_split": "test",
+      "retained_frames": 23,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "re1e4_f180",
+      "eligible_untouched": false,
+      "original_split": "train",
+      "retained_frames": 28,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "re1e4_f270",
+      "eligible_untouched": false,
+      "original_split": "validation",
+      "retained_frames": 20,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "re1e5_f180",
+      "eligible_untouched": false,
+      "original_split": "train",
+      "retained_frames": 28,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "re1e6_retained",
+      "eligible_untouched": false,
+      "original_split": "test",
+      "retained_frames": 20,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "re5e4_f180",
+      "eligible_untouched": false,
+      "original_split": "train",
+      "retained_frames": 28,
+      "role": "exposed_development_or_training"
+    },
+    {
+      "case": "timestep_f90_cfl0p10",
+      "eligible_untouched": false,
+      "original_split": "validation",
+      "retained_frames": 23,
+      "role": "exposed_development_or_training"
+    }
+  ],
+  "comparison_source": "results/jcp_v4_corrected_view_v1/comparison_all_seeds_v1.json",
+  "genuinely_unseen_geometry_fields_available": false,
+  "historical_comparison_independent_accuracy": false,
+  "native_retained_frames": 195,
+  "note": "Scoped to documented study archives, not a claim to have searched every user disk.",
+  "other_exposed_families": [
+    "SU2 diamond alpha0/4/8/20/40",
+    "Madani2017 rendered DSMC cylinder",
+    "hypersonic rarefied cylinder"
+  ],
+  "pending_same_geometry_rerun": "SU2 job 64025706; status unknown; do not duplicate"
+}

@@ -1,0 +1,249 @@
+{
+  "config": {
+    "additional_displays": {
+      "expansion": "physics-only expansion-consistent region; no trained expansion head exists in this composite",
+      "thin_front": "hybrid NMS candidate, separately reported; original orange response area is NOT shock thickness or a validated influence region"
+    },
+    "cfd_contract": {
+      "L": 1.0,
+      "a_inf": 1.0,
+      "cfl_coefficient_max": 0.2,
+      "commit": "0c9a1d434410175ac483b8d71646455444e3b7eb",
+      "domain": [
+        -5,
+        6,
+        -5,
+        5
+      ],
+      "equations": "2D Euler with slip immersed body",
+      "gamma": 1.4,
+      "grid": [
+        990,
+        900
+      ],
+      "independence": "ellipse runs share one geometry-family cluster; 243 frames are not 243 independent cases",
+      "p_inf": 0.7142857142857143,
+      "qualification": "File completeness, finite positive fluid states, exact geometry and coordinates before predictions. Solver completion is not steady convergence or physical shedding validation.",
+      "rho_inf": 1.0,
+      "save_dt_code": 0.1,
+      "solver": "MFC",
+      "state_selection": "all 81 stored states, including initialization; smoke runs excluded",
+      "t_code_final": 8.0,
+      "time_units": "L/a_inf; convective time = Mach * t_code"
+    },
+    "metrics_to_freeze_before_scoring": {
+      "aggregation": "per-case results first; paired differences, not pooled-pixel significance; no confidence interval over three highly related runs",
+      "decision": "No numerical success threshold inferred from the forthcoming test results. A failure stays a failure; tuning retires the case from prospective status.",
+      "shock": [
+        "bidirectional normal/front distance in L and cells",
+        "coverage AND precision at 1/2/4 cells",
+        "gaps/connectivity",
+        "geometry false response"
+      ],
+      "vortex": [
+        "reference center recall and localization in L",
+        "false candidate count",
+        "split/merge rate",
+        "track continuity"
+      ],
+      "wake_shear": [
+        "boundary distance and region overlap only where independent boundary reference exists; otherwise descriptive"
+      ]
+    },
+    "new_cfd": [
+      {
+        "contrast": "new geometry at existing Mach",
+        "geometry_family": "ellipse",
+        "id": "ellipse_m2p7",
+        "length_x": 1.0,
+        "length_y": 0.6,
+        "mach": 2.7
+      },
+      {
+        "contrast": "new Mach at existing geometry",
+        "geometry_family": "circle",
+        "id": "circle_m2p2",
+        "length_x": 1.0,
+        "length_y": 1.0,
+        "mach": 2.2
+      },
+      {
+        "contrast": "joint geometry and Mach shift",
+        "geometry_family": "ellipse",
+        "id": "ellipse_m2p2",
+        "length_x": 1.0,
+        "length_y": 0.6,
+        "mach": 2.2
+      }
+    ],
+    "ordered_gates": [
+      {
+        "complete_when": "Frozen forwards on all registered cases, provenance and full-field early/middle/late review; success judged only with independent references",
+        "name": "prospective transfer",
+        "status": "registered_awaiting_new_fields",
+        "step": 1
+      },
+      {
+        "complete_when": "Same inputs/references for HJ-OP, composite and registered baselines; report all outcomes and runtime; original 15-model campaign remains a separate weak-reference comparison",
+        "name": "matched comparisons and ablations",
+        "status": "historical_campaign_exists_new_composite_comparison_pending",
+        "step": 2
+      },
+      {
+        "complete_when": "Accepted SU2 analytic rays for shock geometry plus independently specified exact translating-vortex/expansion tests; no teacher mask used as its own accuracy reference. Real-case core boundary accuracy requires independent reference, not Q/lambda reuse.",
+        "name": "independent reference",
+        "status": "pending",
+        "step": 3
+      },
+      {
+        "complete_when": "Prespecified wake-onset length, shear-width evolution, vortex-center trajectories and shock-motion coupling compared with independent raw probes/references; no causal/periodic claim without temporal support",
+        "name": "scientific measurement",
+        "status": "pending_previous_gates",
+        "step": 4
+      }
+    ],
+    "primary_model": {
+      "background": "observed fluid outside the union of the three learned masks; independent labels may overlap",
+      "batch_size": 4,
+      "geometry": "Output validity mask only, not a learned input channel",
+      "input": "seven harmonized CFD channels; NOT image-only schlieren",
+      "minimum_component_pixels": 9,
+      "no_test_adjustments": [
+        "weights",
+        "thresholds",
+        "tile context",
+        "component cutoff",
+        "normalization",
+        "case ROI",
+        "front fitting"
+      ],
+      "overlap": 64,
+      "reference": "Explicit upstream rho, p, velocity, gamma and declared body major length; never estimated by test-frame quantile",
+      "shock": {
+        "checkpoint": "results/jcp_upper_shock_preservation_20260905/checkpoint.pt",
+        "sha256": "d1163b39f0bb56bc77ec440bca305845a1fd857c5113c125ab446e61a18862d6",
+        "threshold": 0.97,
+        "tile_size": 384
+      },
+      "threads": 4,
+      "vortex_core": {
+        "checkpoint": "results/jcp_vortex_robustness_20260906_v2/checkpoint.pt",
+        "sha256": "76dd8725e5e36cb54ea3147b2eec09a343720bd78a65fda1742beb492966fe85",
+        "threshold": 0.85,
+        "tile_size": 192
+      },
+      "wake_shear": {
+        "checkpoint": "results/jcp_wake_auxiliary_20260906_v3/checkpoint.pt",
+        "inference": "full_field",
+        "sha256": "cdee0bfbfc73998c0724bdf43f8d275da87fc82e13819aaa3688f1a9be215286",
+        "threshold": 0.5
+      }
+    },
+    "purpose": "Freeze the current experimental composite before receiving new CFD; not a promotion or a successful-generalization claim.",
+    "study_id": "prospective_generalization_20260906_v1"
+  },
+  "created_utc": "2026-09-06T10:25:17.141164+00:00",
+  "files": [
+    {
+      "bytes": 5101,
+      "path": "configs/prospective_generalization_20260906.json",
+      "sha256": "673d3c681866be448839f577485190d0e5745878f42629c12295e30adb1c558b"
+    },
+    {
+      "bytes": 7853,
+      "path": "tools/prospective_transfer_20260906.py",
+      "sha256": "e89398fbd1d7011d81651ee9846d81c4a0cf5be6525e483a54dc338eedbcef61"
+    },
+    {
+      "bytes": 2661,
+      "path": "src/jcp2026/common.py",
+      "sha256": "7ac83806009b24565c9fa80533025ac9175d96eb98c2e98a4f33f63ba54be8cf"
+    },
+    {
+      "bytes": 1936,
+      "path": "src/jcp2026/diagnostics.py",
+      "sha256": "d1c2662acd06325e82df4424440eb2c39b491d0089b7ecf2f492204c247d9dd9"
+    },
+    {
+      "bytes": 5168,
+      "path": "src/jcp2026/infer.py",
+      "sha256": "10237ffbcb14c7825b0a298a9aa3b8ae7df77cc38be19e3fa4f9e23845b6c09d"
+    },
+    {
+      "bytes": 1395,
+      "path": "src/jcp2026/models.py",
+      "sha256": "37854a2969919b6272aeb0991c63a51100f30331ebca48a7e7a9abee8e21b75a"
+    },
+    {
+      "bytes": 7986,
+      "path": "src/jcp2026/wake_auxiliary.py",
+      "sha256": "8b145ee3c52c43820b0e4326bbf7512c87920e80b53ebe0ad24cc50f821856f1"
+    },
+    {
+      "bytes": 10088,
+      "path": "src/ml/flow_aligned.py",
+      "sha256": "b3fcf2c1a3a93d7c6d865d9a3a1aad7d9fcee05b01e5b0044f9ffa34a0843c58"
+    },
+    {
+      "bytes": 3258,
+      "path": "configs/jcp_wake_auxiliary_20260906_v3.json",
+      "sha256": "58da2dc7d41e4a9e063917afd5da487cb4f275d3b40f7832407630499a2d91be"
+    },
+    {
+      "bytes": 2145,
+      "path": "configs/jcp_vortex_robustness_20260906_v2.json",
+      "sha256": "7a792560a1046a84668d1ae2d457db8d1f6cc530e361844f039610b95ed83370"
+    },
+    {
+      "bytes": 7286,
+      "path": "tools/show_front_vs_response_20260906.py",
+      "sha256": "9b3320e3493822919f11b5ae56f2648f6a59ef32ea0fe467e2eb64e323ddc4e0"
+    },
+    {
+      "bytes": 2523,
+      "path": "tools/f270_expansion_display_20260906.py",
+      "sha256": "18737a9763215d3fc2c111c1c0c39097841427d3d40233dabc30cd53591072b1"
+    },
+    {
+      "bytes": 637,
+      "path": "configs/f270_expansion_display_20260906.json",
+      "sha256": "975d57b84b44922b5299ceb67445206366d5088d927b96978a6ad29a1306fa41"
+    },
+    {
+      "bytes": 1103541,
+      "path": "results/jcp_upper_shock_preservation_20260905/checkpoint.pt",
+      "sha256": "d1163b39f0bb56bc77ec440bca305845a1fd857c5113c125ab446e61a18862d6"
+    },
+    {
+      "bytes": 1103541,
+      "path": "results/jcp_vortex_robustness_20260906_v2/checkpoint.pt",
+      "sha256": "76dd8725e5e36cb54ea3147b2eec09a343720bd78a65fda1742beb492966fe85"
+    },
+    {
+      "bytes": 39605,
+      "path": "results/jcp_wake_auxiliary_20260906_v3/checkpoint.pt",
+      "sha256": "cdee0bfbfc73998c0724bdf43f8d275da87fc82e13819aaa3688f1a9be215286"
+    },
+    {
+      "bytes": 367859,
+      "path": "data/processed/jcp_native_primitives_v1/index.json",
+      "sha256": "5140de6c848677be99c0258207567e8a988fff2f8bf4457dfbad9aa1ab6ebdd7"
+    },
+    {
+      "bytes": 988844,
+      "path": "results/jcp_v4_corrected_view_v1/comparison_all_seeds_v1.json",
+      "sha256": "ac2379c5496b98aac7d121c284e93cd2cd252433ae5158ac2de2f68936a8b36c"
+    },
+    {
+      "bytes": 2179,
+      "path": "results/prospective_generalization_20260906_v1/EXPOSURE_AUDIT.json",
+      "sha256": "9631c68286f37b2cb418f9e208b9ae600bf20ddbffb2c9ac088a3a6869540ab1"
+    }
+  ],
+  "prospective_scope": "future registered CFD only; historical development is retrospective",
+  "runtime": {
+    "numpy": "2.5.2",
+    "torch": "2.8.0+cpu"
+  },
+  "validation_status": "NOT_YET_EVALUATED_ON_NEW_CFD"
+}

@@ -1,0 +1,16 @@
+{
+  "meaning": "Supersonic expansion-consistent regions; physics-only overlay, not a learned fan or ground truth",
+  "smoothing_cells": 1.0,
+  "wall_clearance_cells": 4,
+  "mach_min": 1.05,
+  "divergence_L_U_min": 0.15,
+  "pressure_drop_L_min": 0.08,
+  "density_drop_L_min": 0.05,
+  "speed_gain_L_U_min": 0.02,
+  "mach_gain_L_min": 0.02,
+  "minimum_component_pixels": 20,
+  "per_frame_tuning": false,
+  "shock_core_wake_changed": false,
+  "shock_or_wake_exclusion": false,
+  "scope": "Previously exposed f270 development sequence. No claim of centered, isentropic or pure expansion fan. Spatial derivatives, not material derivatives."
+}

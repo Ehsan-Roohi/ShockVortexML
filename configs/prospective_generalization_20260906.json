@@ -1,0 +1,48 @@
+{
+  "study_id": "prospective_generalization_20260906_v1",
+  "purpose": "Freeze the current experimental composite before receiving new CFD; not a promotion or a successful-generalization claim.",
+  "primary_model": {
+    "shock": {"checkpoint": "results/jcp_upper_shock_preservation_20260905/checkpoint.pt", "sha256": "d1163b39f0bb56bc77ec440bca305845a1fd857c5113c125ab446e61a18862d6", "threshold": 0.97, "tile_size": 384},
+    "vortex_core": {"checkpoint": "results/jcp_vortex_robustness_20260906_v2/checkpoint.pt", "sha256": "76dd8725e5e36cb54ea3147b2eec09a343720bd78a65fda1742beb492966fe85", "threshold": 0.85, "tile_size": 192},
+    "wake_shear": {"checkpoint": "results/jcp_wake_auxiliary_20260906_v3/checkpoint.pt", "sha256": "cdee0bfbfc73998c0724bdf43f8d275da87fc82e13819aaa3688f1a9be215286", "threshold": 0.5, "inference": "full_field"},
+    "overlap": 64, "batch_size": 4, "minimum_component_pixels": 9,
+    "threads": 4, "input": "seven harmonized CFD channels; NOT image-only schlieren",
+    "reference": "Explicit upstream rho, p, velocity, gamma and declared body major length; never estimated by test-frame quantile",
+    "geometry": "Output validity mask only, not a learned input channel",
+    "background": "observed fluid outside the union of the three learned masks; independent labels may overlap",
+    "no_test_adjustments": ["weights", "thresholds", "tile context", "component cutoff", "normalization", "case ROI", "front fitting"]
+  },
+  "additional_displays": {
+    "thin_front": "hybrid NMS candidate, separately reported; original orange response area is NOT shock thickness or a validated influence region",
+    "expansion": "physics-only expansion-consistent region; no trained expansion head exists in this composite"
+  },
+  "new_cfd": [
+    {"id": "ellipse_m2p7", "geometry_family": "ellipse", "mach": 2.7, "length_x": 1.0, "length_y": 0.6, "contrast": "new geometry at existing Mach"},
+    {"id": "circle_m2p2", "geometry_family": "circle", "mach": 2.2, "length_x": 1.0, "length_y": 1.0, "contrast": "new Mach at existing geometry"},
+    {"id": "ellipse_m2p2", "geometry_family": "ellipse", "mach": 2.2, "length_x": 1.0, "length_y": 0.6, "contrast": "joint geometry and Mach shift"}
+  ],
+  "cfd_contract": {
+    "solver": "MFC", "commit": "0c9a1d434410175ac483b8d71646455444e3b7eb",
+    "equations": "2D Euler with slip immersed body", "grid": [990,900],
+    "domain": [-5,6,-5,5], "gamma": 1.4, "rho_inf": 1.0, "p_inf": 0.7142857142857143,
+    "L": 1.0, "a_inf": 1.0, "cfl_coefficient_max": 0.2,
+    "t_code_final": 8.0, "save_dt_code": 0.1,
+    "time_units": "L/a_inf; convective time = Mach * t_code",
+    "state_selection": "all 81 stored states, including initialization; smoke runs excluded",
+    "qualification": "File completeness, finite positive fluid states, exact geometry and coordinates before predictions. Solver completion is not steady convergence or physical shedding validation.",
+    "independence": "ellipse runs share one geometry-family cluster; 243 frames are not 243 independent cases"
+  },
+  "ordered_gates": [
+    {"step": 1, "name": "prospective transfer", "status": "registered_awaiting_new_fields", "complete_when": "Frozen forwards on all registered cases, provenance and full-field early/middle/late review; success judged only with independent references"},
+    {"step": 2, "name": "matched comparisons and ablations", "status": "historical_campaign_exists_new_composite_comparison_pending", "complete_when": "Same inputs/references for HJ-OP, composite and registered baselines; report all outcomes and runtime; original 15-model campaign remains a separate weak-reference comparison"},
+    {"step": 3, "name": "independent reference", "status": "pending", "complete_when": "Accepted SU2 analytic rays for shock geometry plus independently specified exact translating-vortex/expansion tests; no teacher mask used as its own accuracy reference. Real-case core boundary accuracy requires independent reference, not Q/lambda reuse."},
+    {"step": 4, "name": "scientific measurement", "status": "pending_previous_gates", "complete_when": "Prespecified wake-onset length, shear-width evolution, vortex-center trajectories and shock-motion coupling compared with independent raw probes/references; no causal/periodic claim without temporal support"}
+  ],
+  "metrics_to_freeze_before_scoring": {
+    "shock": ["bidirectional normal/front distance in L and cells", "coverage AND precision at 1/2/4 cells", "gaps/connectivity", "geometry false response"],
+    "vortex": ["reference center recall and localization in L", "false candidate count", "split/merge rate", "track continuity"],
+    "wake_shear": ["boundary distance and region overlap only where independent boundary reference exists; otherwise descriptive"],
+    "aggregation": "per-case results first; paired differences, not pooled-pixel significance; no confidence interval over three highly related runs",
+    "decision": "No numerical success threshold inferred from the forthcoming test results. A failure stays a failure; tuning retires the case from prospective status."
+  }
+}

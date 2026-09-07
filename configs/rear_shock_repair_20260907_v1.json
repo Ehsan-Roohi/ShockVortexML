@@ -1,0 +1,23 @@
+{
+  "experiment": "rear_shock_repair_20260907_v1",
+  "parent_checkpoint": "results/jcp_upper_shock_preservation_20260905/checkpoint.pt",
+  "parent_sha256": "d1163b39f0bb56bc77ec440bca305845a1fd857c5113c125ab446e61a18862d6",
+  "seed": 2026090701,
+  "frame_stride": 4,
+  "teacher_dilation_cells": 2,
+  "teacher_ignore_cells": 3,
+  "training": {
+    "steps": 600,
+    "batch_size": 4,
+    "patch_size": 192,
+    "learning_rate": 0.00005,
+    "minimum_learning_rate": 0.000005,
+    "weight_decay": 0.0001,
+    "positive_weight_cap": 20.0,
+    "parent_preservation_weight": 0.05,
+    "multiscale_weight": 0.15,
+    "threads": 4
+  },
+  "evaluation": {"threshold": 0.97, "tile_size": 384, "overlap": 64, "batch_size": 4, "minimum_pixels": 9},
+  "claim_boundary": "Development repair using physics-derived weak targets on the three exposed CFD trajectories; not untouched or independent accuracy."
+}

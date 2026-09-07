@@ -16,10 +16,29 @@ from jcp2026.diagnostics import build_inputs
 from jcp2026.infer import predict_tiled, clean
 from jcp2026.models import make_model
 from ml.flow_aligned import FreestreamReference
-from show_front_vs_response_20260906 import narrow_front
 
 CONFIG=ROOT/'configs/rear_shock_repair_20260907_v1.json'
 PREFIXES=('shock_decoder.','shock_head.')
+
+def sample(a,x,y,xq,yq):
+    """Bilinear sampling on a monotone rectilinear CFD grid."""
+    col=np.interp(xq,x,np.arange(len(x)));row=np.interp(yq,y,np.arange(len(y)))
+    return ndi.map_coordinates(a,[row,col],order=1,mode='nearest')
+
+def weak_front(f,domain,ref):
+    """Entropy-free compression/jump/normal-NMS weak shock centerline."""
+    safe=ndi.binary_erosion(domain,iterations=4);w=ndi.gaussian_filter(domain.astype(float),1.)
+    def smooth(a):return ndi.gaussian_filter(np.where(domain,a,0.),1.)/np.maximum(w,1e-12)
+    pressure,rho=[np.maximum(smooth(f[k]),1e-12) for k in ('pressure','rho')];u,v=[smooth(f[k]) for k in ('u','v')]
+    x,y=f['x'],f['y'];X,Y=np.meshgrid(x,y);L=ref.reference_length;U=ref.speed_inf
+    py,px=np.gradient(np.log(pressure),y,x);g=np.hypot(px,py);nx=px/np.maximum(g,1e-12);ny=py/np.maximum(g,1e-12)
+    dx=np.gradient(x)[None,:];dy=np.gradient(y)[:,None];h=np.minimum(1/np.sqrt((nx/dx)**2+(ny/dy)**2+1e-20),np.maximum(dx,dy))
+    def at(a,n):return sample(a,x,y,X+n*h*nx,Y+n*h*ny)
+    uy,ux=np.gradient(u,y,x);vy,vx=np.gradient(v,y,x);compression=-(ux+vy)*L/U
+    jp=at(np.log(pressure),3)-at(np.log(pressure),-3);jr=at(np.log(rho),3)-at(np.log(rho),-3);du=((at(u,3)-at(u,-3))*nx+(at(v,3)-at(v,-3))*ny)/U
+    candidate=safe&(g>=at(g,1))&(g>=at(g,-1))&(compression>=.5)&(g*L>=1.)&(jp>=.055)&(jr>=.025)&(du<=-.01)
+    lab,n=ndi.label(ndi.binary_dilation(candidate),np.ones((3,3)));counts=np.bincount(lab[candidate],minlength=n+1);keep=counts>=5;keep[0]=False
+    return candidate&keep[lab]
 
 def reference(case):
     m=2.7 if case=='ellipse_m2p7' else 2.2
@@ -53,7 +72,7 @@ def prepare(inputs,predictions,out,cfg):
         selected=sorted(case_dir.glob('*.npz'))[::cfg['frame_stride']]
         for src in selected:
             f=fields(src); ref=reference(case_dir.name); domain=f['observation_mask'].astype(bool)&~f['geometry'].astype(bool)
-            target,_=narrow_front(f,domain,ref.to_dict());target=ndi.binary_dilation(target,iterations=cfg['teacher_dilation_cells'])&domain
+            target=weak_front(f,domain,ref);target=ndi.binary_dilation(target,iterations=cfg['teacher_dilation_cells'])&domain
             halo=ndi.binary_dilation(target,iterations=cfg['teacher_ignore_cells'])&~target
             valid=domain&~halo
             with np.load(predictions/case_dir.name/src.name) as z:wake=z['wake_shear'].astype(bool)

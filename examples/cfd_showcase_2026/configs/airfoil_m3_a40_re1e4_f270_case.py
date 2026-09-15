@@ -37,7 +37,7 @@ if args.mode == "restart" and args.start_time <= 0.0:
 gamma = 1.4
 mach = 3.0
 alpha_deg = 40.0
-re_chord = 1.0e6
+re_chord = 10000  # Tim Colonius high-viscosity diagnostic
 rho_inf = 1.0
 p_inf = 1.0 / gamma
 a_inf = math.sqrt(gamma * p_inf / rho_inf)
@@ -122,7 +122,7 @@ case = {
     "mapped_weno": "F",
     "null_weights": "F",
     "mp_weno": "F",
-    "riemann_solver": 2,
+    "riemann_solver": 1,
     "wave_speeds": 1,
     "viscous": "T",
     "fd_order": 4,

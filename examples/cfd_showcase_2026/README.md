@@ -26,7 +26,7 @@ This repository and Release provide the material normally needed to review a sci
 
 - descriptive title and one-paragraph summary;
 - solver, geometry, flow conditions, resolution, frame rate, and time range for each movie;
-- reproducible render scripts and representative solver configuration;
+- reproducible render scripts and exact archived production inputs for all three cases;
 - fixed movie-wide color normalization rather than per-frame rescaling;
 - SHA-256 checksums and byte sizes in `manifest.json` and `SHA256SUMS.txt`;
 - a 4K preview contact sheet suitable for selecting a website thumbnail;
@@ -40,4 +40,4 @@ High-resolution density-gradient schlieren visualizations of supersonic flow pas
 
 ## Scope and limitations
 
-These movies are visualization outputs, not claims of experimental validation or fully converged vortex shedding. Exact numerical settings for a case should be taken from its solver input and run record.
+These movies are visualization outputs, not claims of experimental validation or fully converged vortex shedding. The case-specific Release ZIP files contain the archived `case.py` and generated solver inputs used for each run; the airfoil package also includes its STL geometry and preflight metadata.

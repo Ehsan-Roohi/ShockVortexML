@@ -4,7 +4,6 @@
   "files": [
     {"name": "airfoil_m3_a40_re1e4_f270_t0_t12_schlieren_framed.mp4", "solver": "MFC", "bytes": 156492237, "sha256": "B463659FD00B8992D2043E6591A9F9B6536FC0AC3284001090C881F003A426D2", "resolution": [3840, 2160], "fps": 30, "time_range": [0, 12]},
     {"name": "cylinder_m2p7_f180_t0_t16_schlieren_framed.mp4", "solver": "MFC", "bytes": 227132370, "sha256": "01715A2DBD5150EF535E0A7AF39F1D8506CC0700A8F7B26F28825C86F20977BA", "resolution": [3840, 2160], "fps": 30, "time_range": [0, 16]},
-    {"name": "ellipse_m2p7_f90_t0_t16_schlieren_framed.mp4", "solver": "MFC", "bytes": 222710333, "sha256": "A48C971A0F7997503E8AD6DE07A951B5DB7D823B693E9BDD748550070505DD1D", "resolution": [3840, 2160], "fps": 30, "time_range": [0, 16]},
-    {"name": "alpha20_m3_sst_urans_schlieren_mach_4k.mp4", "solver": "SU2", "bytes": 10555629, "sha256": "F74646016B2276C62D0B2DD9F63021D7D50A3669FD89D4D1C85366530CEE5A7B", "resolution": [3840, 2160], "fps": 20, "frames": 100, "time_range_after_restart": [0, 0.00095039604]}
+    {"name": "ellipse_m2p7_f90_t0_t16_schlieren_framed.mp4", "solver": "MFC", "bytes": 222710333, "sha256": "A48C971A0F7997503E8AD6DE07A951B5DB7D823B693E9BDD748550070505DD1D", "resolution": [3840, 2160], "fps": 30, "time_range": [0, 16]}
   ]
 }
